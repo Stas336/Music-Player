@@ -84,6 +84,8 @@ public class ServiceActivity extends Service {
         super.onDestroy();
         player.stop();
         player.release();
+        seekHandler.removeCallbacks(run);
+        MainActivity.song_duration.setProgress(0);
         Toast.makeText(this, "Service has been destroyed", Toast.LENGTH_SHORT).show();
     }
 
